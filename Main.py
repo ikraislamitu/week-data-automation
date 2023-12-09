@@ -3,7 +3,7 @@ import pymysql
 from oauth2client.service_account import ServiceAccountCredentials
 
 # Set up your Google Sheets credentials and open the sheet
-scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+scope = ["https://spreadsheets.google.com"]
 credentials = ServiceAccountCredentials.from_json_keyfile_name('cred.json', scope)
 gc = gspread.authorize(credentials)
 worksheet = gc.open("Weekly consultations data").worksheet("Automation")
@@ -13,7 +13,7 @@ existing_data = worksheet.col_values(2)
 last_row_with_data = len(existing_data)
 
 # Connect to the MySQL database
-db = pymysql.connect(host="doctime-core-prod-serverless-v2-cluster.cluster-ro-cyzxrlktckq2.ap-southeast-1.rds.amazonaws.com", user="ops1", password="3JXt7bKtTux3SHUc", db="dt_core_prod")
+db = pymysql.connect(host="", user="", password="", db="")
 cursor = db.cursor()
 
 # Set your start and end date here
